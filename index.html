@@ -33,6 +33,15 @@
             margin-bottom: 20px;
         }
 
+        .flash {
+            background-color: #ffdddd;
+            color: #d8000c;
+            border: 1px solid #d8000c;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
         label {
             font-size: 14px;
             color: #555;
@@ -49,6 +58,11 @@
             font-size: 14px;
         }
 
+        input:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
         button {
             width: 100%;
             padding: 10px;
@@ -58,6 +72,7 @@
             border-radius: 4px;
             font-size: 14px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
@@ -74,19 +89,33 @@
 <body>
 
     <div class="container">
+        <!-- Logo -->
         <img src="/static/logo.png" alt="Logo">
+
+        <!-- Title -->
         <h2>Login to Your Dashboard</h2>
 
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <div class="flash">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <!-- Login Form -->
         <form action="/login" method="post">
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required><br>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required aria-label="Username">
 
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required><br>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required aria-label="Password">
 
             <button type="submit">Login</button>
         </form>
 
+        <!-- Footer -->
         <div class="footer">
             <p>Powered by Evitamin Business Consulting Pvt. Ltd.</p>
         </div>
