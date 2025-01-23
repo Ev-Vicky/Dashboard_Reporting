@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        /* General Styling */
+        body {
+            background-color: #f4f5f7; /* Light off-white background */
+            color: #333; /* Dark grey text */
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Styling */
+        .header {
+            display: flex;
+            justify-content: space-between; /* Logo on the left, title centered, button on the right */
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #2c3e50; /* Dark grey header */
+            color: white;
+            border-bottom: 2px solid #34495e; /* Slightly lighter border */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .logo img {
+            height: 45px;
+            margin-right: 15px;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            margin: 0;
+            color: #ecf0f1; /* Light text */
+            font-weight: bold;
+            text-align: center;
+            flex-grow: 1; /* Center the title */
+        }
+
+        .logout-btn {
+            padding: 10px 20px;
+            background-color: #3498db; /* Blue color */
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: #2980b9; /* Darker blue on hover */
+            transform: scale(1.05);
+        }
+
+        /* Main content area */
+        .container {
+            margin-top: 100px; /* Adjusted to account for the fixed header */
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative; /* For absolute positioning of grey box */
+        }
+
+        iframe {
+            border: none;
+            border-radius: 8px;
+            width: 100%;
+            height: 600px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Shadow for iframe */
+        }
+
+        /* Grey box overlay to cover the Share button */
+        .overlay-box {
+            position: absolute;
+            top: 92%; /* Adjusted to move further down */
+            left: 80%; /* Closer to the corner */
+            width: 18%; /* Adjusted width to better cover the button */
+            height: 25px; /* Reduced height for better coverage */
+            background-color: rgba(211, 211, 211, 0.15); /* Lighter grey with more transparency */
+            z-index: 10; /* Make sure the overlay is on top */
+            border-radius: 4px; /* Rounded corners */
+        }
+
+        /* Footer Styling */
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #7f8c8d; /* Light grey for footer text */
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .footer a {
+            color: #3498db; /* Blue for links */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px 20px;
+            }
+            .header h1 {
+                font-size: 1.4rem;
+            }
+            .logout-btn {
+                padding: 8px 15px;
+            }
+            iframe {
+                height: 500px;
+            }
+            .overlay-box {
+                top: 88%; /* Adjust overlay position for smaller screens */
+                left: 75%; /* Adjust left position */
+                width: 20%; /* Adjust width for smaller screens */
+                height: 22px; /* Adjust height for better visibility */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <!-- Logo on the left -->
+        <div class="logo">
+            <img src="/static/logo.png" alt="Company Logo">
+        </div>
+
+        <!-- Centered Title -->
+        <h1>Welcome to the Evitamin Reporting!</h1>
+
+        <!-- Logout Button on the Right -->
+        <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="container">
+        <!-- Grey Box to Cover Share Button -->
+        <div class="overlay-box"></div>
+
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <!-- Embed the dashboard content -->
+                <iframe src="{{ dashboard_link }}" width="100%" height="700px"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>© 2025 Your Company. Designed by <a href="#">Evitamin Business Consulting Pvt. Ltd.</a>.</p>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

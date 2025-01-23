@@ -1,0 +1,10 @@
+{
+  "user1": {
+    "password": "pass1",
+    "dashboard_link": "https://app.powerbi.com/view?r=eyJrIjoiNTZmODk0NmUtOWExYy00ZTFmLWE3MWMtNjhjODBlYjY2NTQzIiwidCI6IjM1OGQyZDFjLWY4YmItNGJlMy05ZjU1LWRjYWQzNTk0NWY3MSJ9"
+  },
+  "Amazon_Dashboard": {
+    "password": "Evits@123",
+    "dashboard_link": "https://app.powerbi.com/view?r=eyJrIjoiNmFiMzVkZjMtMDM0Ny00MDI3LThiYjgtNTczNjBmY2EyODIzIiwidCI6IjM1OGQyZDFjLWY4YmItNGJlMy05ZjU1LWRjYWQzNTk0NWY3MSJ9"
+  }
+}
